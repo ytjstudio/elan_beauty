@@ -33,14 +33,14 @@ export function AdminCustomers() {
       setOrders(allOrders);
 
       const rows: CustomerRow[] = (users || []).map((u: any) => {
-        const userOrders = allOrders.filter(o => o.user_id === u.id);
+        const userOrders = allOrders.filter(o => o.user_id === u.user_id);
         const paid = userOrders.filter(o => o.payment_status === 'paid');
         return {
-          id: u.id,
-          email: u.email,
-          full_name: u.full_name || '-',
-          phone: u.phone || '-',
-          created_at: u.created_at,
+          id: u.user_id,
+          email: u.user_email,
+          full_name: u.user_full_name || '-',
+          phone: u.user_phone || '-',
+          created_at: u.user_created_at,
           orderCount: userOrders.length,
           totalSpent: paid.reduce((s, o) => s + Number(o.total), 0),
         };
