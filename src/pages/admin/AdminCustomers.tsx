@@ -22,7 +22,12 @@ export function AdminCustomers() {
 
   useEffect(() => {
     (async () => {
-      const { data: users } = await supabase.from('auth.users').select('id, email, created_at, raw_user_meta_data');
+      const { data: users, error: userError } = await supabase.rpc('get_all_users');
+      if (userError) {
+        console.error('Failed to load users:', userError);
+        setLoading(false);
+        return;
+      }
       const { data: orderData } = await supabase.from('orders').select('*');
       const allOrders = orderData as Order[] || [];
       setOrders(allOrders);
@@ -33,8 +38,8 @@ export function AdminCustomers() {
         return {
           id: u.id,
           email: u.email,
-          full_name: u.raw_user_meta_data?.full_name || '-',
-          phone: u.raw_user_meta_data?.phone || '-',
+          full_name: u.full_name || '-',
+          phone: u.phone || '-',
           created_at: u.created_at,
           orderCount: userOrders.length,
           totalSpent: paid.reduce((s, o) => s + Number(o.total), 0),

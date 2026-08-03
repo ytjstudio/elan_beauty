@@ -1,10 +1,12 @@
 import { useState } from 'react';
-import { User, Mail, Phone, Lock, Save, Check } from 'lucide-react';
+import { User, Mail, Phone, Lock, Save, Check, Trash2, AlertTriangle } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import { useAuth } from '../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 export function CustomerProfile() {
-  const { user } = useAuth();
+  const { user, signOut } = useAuth();
+  const navigate = useNavigate();
   const [name, setName] = useState(user?.user_metadata?.full_name || '');
   const [phone, setPhone] = useState(user?.user_metadata?.phone || '');
   const [saved, setSaved] = useState(false);
@@ -13,6 +15,24 @@ export function CustomerProfile() {
   // Password change
   const [pwd, setPwd] = useState({ new: '', confirm: '' });
   const [pwdMsg, setPwdMsg] = useState('');
+
+  // Account deletion
+  const [deleteConfirm, setDeleteConfirm] = useState(false);
+  const [deleting, setDeleting] = useState(false);
+  const [deleteError, setDeleteError] = useState('');
+
+  const handleDeleteAccount = async () => {
+    setDeleting(true);
+    setDeleteError('');
+    const { error } = await supabase.rpc('delete_own_account');
+    if (error) {
+      setDeleteError(error.message);
+      setDeleting(false);
+    } else {
+      await signOut();
+      navigate('/', { replace: true });
+    }
+  };
 
   const handleSaveProfile = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -93,6 +113,35 @@ export function CustomerProfile() {
           </div>
           <button type="submit" className="btn-primary">Update Password</button>
         </form>
+      </div>
+
+      {/* Delete account */}
+      <div className="card p-6 border-red-200">
+        <div className="flex items-center gap-2 mb-4">
+          <AlertTriangle className="w-5 h-5 text-red-600" />
+          <h2 className="font-serif text-lg font-bold text-red-600">Delete Account</h2>
+        </div>
+        <p className="text-sm text-secondary-600 mb-4">Permanently delete your account and all associated data. This action cannot be undone.</p>
+        {deleteError && <div className="bg-error-50 text-error-700 px-4 py-3 rounded-lg mb-4 text-sm">{deleteError}</div>}
+        {!deleteConfirm ? (
+          <button onClick={() => setDeleteConfirm(true)} className="inline-flex items-center gap-2 px-4 py-2 border border-red-300 text-red-600 rounded-lg hover:bg-red-50 transition-colors">
+            <Trash2 className="w-4 h-4" /> Delete My Account
+          </button>
+        ) : (
+          <div className="space-y-4">
+            <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+              <p className="text-sm text-red-700 font-medium">Are you absolutely sure? This will permanently delete your account, orders, and wishlist.</p>
+            </div>
+            <div className="flex gap-3">
+              <button onClick={handleDeleteAccount} disabled={deleting} className="inline-flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 disabled:opacity-50 transition-colors">
+                <Trash2 className="w-4 h-4" /> {deleting ? 'Deleting...' : 'Yes, Delete Forever'}
+              </button>
+              <button onClick={() => { setDeleteConfirm(false); setDeleteError(''); }} className="px-4 py-2 border border-secondary-300 text-secondary-700 rounded-lg hover:bg-secondary-50 transition-colors">
+                Cancel
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
