@@ -19,7 +19,7 @@ BEGIN
   -- Prevent the admin from deleting their account this way
   IF EXISTS (
     SELECT 1 FROM auth.users
-    WHERE id = caller_id AND email = 'admin@elanbeauty.com'
+    WHERE id = caller_id AND email = 'Folasayowork@gmail.com'
   ) THEN
     RAISE EXCEPTION 'Admin account cannot be deleted this way';
   END IF;

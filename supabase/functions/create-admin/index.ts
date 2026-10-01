@@ -21,7 +21,7 @@ Deno.serve(async (req: Request) => {
     );
 
     const { data: existing } = await supabaseAdmin.auth.admin.listUsers();
-    const adminExists = existing.users.some((u: any) => u.email === "admin@elanbeauty.com");
+    const adminExists = existing.users.some((u: any) => u.email === "Folasayowork@gmail.com");
 
     if (adminExists) {
       return new Response(JSON.stringify({ message: "Admin user already exists" }), {
@@ -30,7 +30,7 @@ Deno.serve(async (req: Request) => {
     }
 
     const { data, error } = await supabaseAdmin.auth.admin.createUser({
-      email: "admin@elanbeauty.com",
+      email: "Folasayowork@gmail.com",
       password: "Admin123!",
       email_confirm: true,
       user_metadata: { full_name: "Store Admin" },

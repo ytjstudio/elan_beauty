@@ -22,7 +22,7 @@ const CartContext = createContext<CartContextType>({
   itemCount: 0,
 });
 
-const STORAGE_KEY = 'elan_cart';
+const STORAGE_KEY = 'sayo_cart';
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);

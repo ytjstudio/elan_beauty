@@ -38,7 +38,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return () => listener.subscription.unsubscribe();
   }, []);
 
-  const isAdmin = session?.user?.email === 'admin@elanbeauty.com';
+  const isAdmin = session?.user?.email === 'Folasayowork@gmail.com';
 
   const signOut = async () => {
     await supabase.auth.signOut();

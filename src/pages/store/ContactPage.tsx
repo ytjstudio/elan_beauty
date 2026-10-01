@@ -45,7 +45,7 @@ export function ContactPage() {
               </div>
               <div>
                 <h3 className="font-serif text-lg font-bold text-secondary-900">Email</h3>
-                <p className="text-secondary-600">{settings?.contact_email || 'hello@elanbeauty.com'}</p>
+                <p className="text-secondary-600">{settings?.contact_email || 'Folasayowork@gmail.com'}</p>
               </div>
             </div>
           </div>

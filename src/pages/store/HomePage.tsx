@@ -28,7 +28,7 @@ export function HomePage() {
   }, []);
 
   const reviews = [
-    { name: 'Amara O.', text: 'Elan Beauty has completely transformed my skincare routine. The Radiance Serum is a game-changer!', rating: 5, location: 'Lagos' },
+    { name: 'Amara O.', text: 'Sayo Alchemy has completely transformed my skincare routine. The Radiance Serum is a game-changer!', rating: 5, location: 'Lagos' },
     { name: 'Chioma N.', text: 'The quality of these products is unmatched. My skin has never looked better. Highly recommend!', rating: 5, location: 'Abuja' },
     { name: 'Funmi A.', text: 'Beautiful packaging, fast delivery, and amazing products. The lipstick stays on all day!', rating: 5, location: 'Ibadan' },
   ];
@@ -39,7 +39,7 @@ export function HomePage() {
       <section className="relative h-[70vh] min-h-[500px] overflow-hidden">
         <img
           src={settings?.hero_banner || 'https://images.pexels.com/photos/3373736/pexels-photo-3373736.jpeg?auto=compress&cs=tinysrgb&w=1600'}
-          alt="Elan Beauty"
+          alt="Sayo Alchemy"
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-secondary-950/70 via-secondary-950/40 to-transparent" />
@@ -168,7 +168,7 @@ export function HomePage() {
       <section className="bg-primary-700 py-16">
         <div className="max-w-4xl mx-auto px-4 text-center text-white">
           <h2 className="font-serif text-3xl lg:text-4xl font-bold mb-4">Ready to Glow?</h2>
-          <p className="text-primary-100 mb-8 text-lg">Join thousands of happy customers who trust Elan Beauty for their beauty needs.</p>
+          <p className="text-primary-100 mb-8 text-lg">Join thousands of happy customers who trust Sayo Alchemy for their beauty needs.</p>
           <Link to="/shop" className="btn bg-white text-primary-700 hover:bg-primary-50 text-base">
             Start Shopping <ArrowRight className="w-5 h-5" />
           </Link>

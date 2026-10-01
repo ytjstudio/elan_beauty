@@ -50,7 +50,7 @@ export function AdminLayout() {
               </div>
             )}
             <div>
-              <p className="font-serif text-lg font-bold text-white">{settings?.store_name || 'Elan Beauty'}</p>
+              <p className="font-serif text-lg font-bold text-white">{settings?.store_name || 'Sayo Alchemy'}</p>
               <p className="text-xs text-secondary-400">Admin Panel</p>
             </div>
           </Link>

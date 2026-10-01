@@ -1,5 +1,5 @@
 /*
-# Elan Beauty E-commerce Schema
+# Sayo Alchemy E-commerce Schema
 
 ## Overview
 Complete e-commerce platform for a single-seller beauty brand. Includes customer auth,
@@ -306,13 +306,13 @@ CREATE POLICY "update_own_notifications" ON notifications FOR UPDATE
 -- ============ SETTINGS ============
 CREATE TABLE IF NOT EXISTS settings (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
-  store_name text NOT NULL DEFAULT 'Elan Beauty',
+  store_name text NOT NULL DEFAULT 'Sayo Alchemy',
   store_logo text,
   hero_banner text,
   hero_title text DEFAULT 'Radiance, Redefined',
   hero_subtitle text DEFAULT 'Discover premium beauty essentials crafted for your glow.',
-  contact_email text DEFAULT 'hello@elanbeauty.com',
-  contact_phone text DEFAULT '+234 800 000 0000',
+  contact_email text DEFAULT 'Folasayowork@gmail.com',
+  contact_phone text DEFAULT '+2349122971223',
   store_address text DEFAULT 'Lagos, Nigeria',
   whatsapp_number text,
   instagram_url text,

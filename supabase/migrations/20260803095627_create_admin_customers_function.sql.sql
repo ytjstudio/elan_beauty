@@ -1,5 +1,5 @@
 -- Create a view that safely exposes user data for admin use
--- The admin is identified by their email being admin@elanbeauty.com
+-- The admin is identified by their email being Folasayowork@gmail.com
 
 CREATE OR REPLACE FUNCTION public.get_all_users()
 RETURNS TABLE (
@@ -19,10 +19,10 @@ BEGIN
     RAISE EXCEPTION 'Not authenticated';
   END IF;
 
-  -- Only allow the admin user (admin@elanbeauty.com) to call this
+  -- Only allow the admin user (Folasayowork@gmail.com) to call this
   IF NOT EXISTS (
     SELECT 1 FROM auth.users
-    WHERE id = auth.uid() AND email = 'admin@elanbeauty.com'
+    WHERE id = auth.uid() AND email = 'Folasayowork@gmail.com'
   ) THEN
     RAISE EXCEPTION 'Not authorized';
   END IF;

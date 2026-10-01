@@ -46,10 +46,10 @@ export function SignupPage() {
             <div className="h-10 w-10 rounded-full bg-primary-600 flex items-center justify-center">
               <span className="text-white font-serif text-xl font-bold">E</span>
             </div>
-            <span className="font-serif text-2xl font-bold text-secondary-900">{settings?.store_name || 'Elan Beauty'}</span>
+            <span className="font-serif text-2xl font-bold text-secondary-900">{settings?.store_name || 'Sayo Alchemy'}</span>
           </Link>
           <h1 className="font-serif text-2xl font-bold text-secondary-900">Create Account</h1>
-          <p className="text-secondary-600 text-sm mt-1">Join the Elan Beauty family</p>
+          <p className="text-secondary-600 text-sm mt-1">Join the Sayo Alchemy family</p>
         </div>
 
         <div className="card p-8">

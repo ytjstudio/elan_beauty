@@ -23,7 +23,7 @@ export function LoginPage() {
       setError(error.message);
       setLoading(false);
     } else {
-      navigate(email === 'admin@elanbeauty.com' ? '/admin' : '/account');
+      navigate(email === 'Folasayowork@gmail.com' ? '/admin' : '/account');
     }
   };
 
@@ -35,7 +35,7 @@ export function LoginPage() {
             <div className="h-10 w-10 rounded-full bg-primary-600 flex items-center justify-center">
               <span className="text-white font-serif text-xl font-bold">E</span>
             </div>
-            <span className="font-serif text-2xl font-bold text-secondary-900">{settings?.store_name || 'Elan Beauty'}</span>
+            <span className="font-serif text-2xl font-bold text-secondary-900">{settings?.store_name || 'Sayo Alchemy'}</span>
           </Link>
           <h1 className="font-serif text-2xl font-bold text-secondary-900">Welcome Back</h1>
           <p className="text-secondary-600 text-sm mt-1">Sign in to your account</p>
