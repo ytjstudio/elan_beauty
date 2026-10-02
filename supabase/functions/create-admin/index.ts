@@ -34,6 +34,7 @@ Deno.serve(async (req: Request) => {
       password: "Admin123!",
       email_confirm: true,
       user_metadata: { full_name: "Store Admin" },
+      app_metadata: { role: "admin" },
     });
 
     if (error) {

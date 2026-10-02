@@ -64,12 +64,17 @@ export function AdminProductForm() {
       images: form.images,
     };
 
+    let error = null;
     if (isEdit) {
-      await supabase.from('products').update(payload).eq('id', id);
+      ({ error } = await supabase.from('products').update(payload).eq('id', id));
     } else {
-      await supabase.from('products').insert(payload);
+      ({ error } = await supabase.from('products').insert(payload));
     }
     setSaving(false);
+    if (error) {
+      alert('Error saving product: ' + error.message);
+      return;
+    }
     navigate('/admin/products');
   };
 
